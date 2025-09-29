@@ -29,7 +29,7 @@
         'security/ir.model.access.csv',
         'data/ec_104_line_data.xml',
         'views/ec_104_line_views.xml',
-        'views/ec_reports_menu.xml',
+        'views/test_menu.xml',
         'views/vat_report_wizard_views.xml',
         'reports/ec_vat_reports.xml',
     ],
