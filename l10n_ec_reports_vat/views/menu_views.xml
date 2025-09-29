@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Ecuador Reports Root Menu - Main Navigation Bar -->
+    <!-- Ecuador Reports Root Menu - Under Invoices -->
     <menuitem id="menu_ec_reports_root" 
               name="Ecuador Reports" 
+              parent="account.menu_finance"
               sequence="50"/>
 
     <!-- VAT Report Menu -->

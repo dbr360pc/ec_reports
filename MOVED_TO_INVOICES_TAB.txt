@@ -1,0 +1,39 @@
+ECUADOR REPORTS MOVED TO INVOICES TAB
+===================================
+
+✅ CHANGE APPLIED: Moved Ecuador Reports to Invoices/Billing menu
+
+BEFORE:
+- Ecuador Reports was at TOP LEVEL (main navigation bar)
+
+AFTER:
+- Ecuador Reports now under INVOICES/BILLING tab
+
+NAVIGATION PATH:
+Main Menu → Invoicing/Billing → Ecuador Reports
+
+MENU STRUCTURE (Under Invoices):
+┌─ Invoicing/Billing
+│  ├─ Customers
+│  ├─ Vendors  
+│  ├─ Products
+│  ├─ Ecuador Reports ← NEW LOCATION
+│  │  ├─ VAT Reports (Forms 103/104)
+│  │  ├─ ATS SRI Reports
+│  │  ├─ Form 103 (Withholdings)
+│  │  └─ Ecuador Configuration
+│  │     ├─ Form 104 Line Mappings
+│  │     └─ ATS Catalogs
+│  ├─ Reporting
+│  └─ Configuration
+
+CHANGE MADE:
+- Added parent="account.menu_finance" to Ecuador Reports root menu
+- This places it under the main Accounting/Invoicing menu
+
+NEXT STEP:
+1. Upgrade l10n_ec_reports_vat module
+2. Check Invoicing/Billing → Ecuador Reports
+3. All existing submenus will automatically follow
+
+The parent menu "account.menu_finance" is the main Invoicing/Billing menu that we know works in your system.
