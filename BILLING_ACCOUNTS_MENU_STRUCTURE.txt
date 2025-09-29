@@ -1,0 +1,37 @@
+ECUADOR REPORTS - BILLING/ACCOUNTS NAVIGATION
+===========================================
+
+✅ MENU STRUCTURE CONFIGURED FOR BILLING/ACCOUNTS PAGE
+
+FINAL MENU HIERARCHY:
+┌─ Billing/Accounts (account.menu_finance)
+│  └─ Ecuador Reports  
+│     ├─ VAT Reports (Forms 103/104)     [VAT Module]
+│     ├─ ATS SRI Reports                 [ATS Module]  
+│     └─ Form 103 (Withholdings)         [103 Module]
+
+NAVIGATION PATH:
+Main Menu → Billing/Accounts → Ecuador Reports → [Choose Report Type]
+
+WHAT WAS CHANGED:
+✅ VAT Module: Creates "Ecuador Reports" root menu under Billing/Accounts
+✅ ATS Module: Places "ATS SRI Reports" under Ecuador Reports  
+✅ Form 103 Module: Places "Form 103 (Withholdings)" under Ecuador Reports
+
+MODULE DEPENDENCIES:
+1. l10n_ec_reports_vat (INSTALL FIRST) - Creates the root Ecuador Reports menu
+2. l10n_ec_reports_ats_sri - References VAT module's root menu
+3. l10n_ec_reports_103 - References VAT module's root menu
+
+INSTALLATION ORDER:
+1. Install/Upgrade l10n_ec_reports_vat FIRST
+2. Install/Upgrade l10n_ec_reports_ats_sri 
+3. Install/Upgrade l10n_ec_reports_103
+
+EXPECTED RESULT:
+After installation, navigate to:
+Billing/Accounts → Ecuador Reports
+
+You'll see all three reporting options grouped together under Ecuador Reports.
+
+NEXT STEP: Install the VAT module first, then the other two modules.
