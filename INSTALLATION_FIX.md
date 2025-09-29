@@ -17,6 +17,11 @@
 
 **Root Cause:** Odoo 17 replaced `attrs` with direct attributes like `invisible`, `required`, etc.
 
+## ❌ Problem 4: Security File Model References
+**Error:** `No matching record found for external id 'model_ats_sustain_code' in field 'Model'`
+
+**Root Cause:** Security files used incorrect external ID format for model references
+
 ## ✅ Solutions Applied
 
 ### 1. Fixed Duplicate Box Codes
@@ -86,6 +91,23 @@ attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('move_type', 'not in', ['
 invisible="state != 'posted' or move_type not in ('out_invoice')"
 ```
 
+### 5. Fixed Security File Model References
+**Files:** All `security/ir.model.access.csv` files in all modules
+
+**Changed:**
+```csv
+# OLD (incorrect external ID format)
+access_ats_id_type_user,access_ats_id_type_user,model_ats_id_type,account.group_account_user,1,0,0,0
+
+# NEW (correct module-prefixed external ID)
+access_ats_id_type_user,access_ats_id_type_user,l10n_ec_reports_ats_sri.model_ats_id_type,account.group_account_user,1,0,0,0
+```
+
+### 6. Added Missing AtsSustainCode Model
+**File:** `l10n_ec_reports_ats_sri/models/ats_catalog.py`
+
+**Added complete model definition for sustain codes referenced in data files.**
+
 ## 📋 Final Box Code Mapping (Ecuador Form 104)
 
 | Code | Description | Usage |
@@ -110,7 +132,9 @@ The modules should now install without errors:
 ✅ **All view elements comply** with Odoo 17 validation requirements  
 ✅ **Label tags replaced** with proper Bootstrap alert divs for better UX  
 ✅ **All attrs converted** to Odoo 17 direct attribute format  
-✅ **Complex conditions updated** with proper boolean logic syntax
+✅ **Complex conditions updated** with proper boolean logic syntax  
+✅ **Security files fixed** with proper module-prefixed external IDs  
+✅ **Missing models added** (AtsSustainCode) for complete functionality
 
 **Installation Status:**
 All three modules are now **fully compatible with Odoo 17 Community Edition**.

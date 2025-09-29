@@ -1,4 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_ec_104_line_user,access_ec_104_line_user,model_ec_104_line,account.group_account_user,1,0,0,0
-access_ec_104_line_manager,access_ec_104_line_manager,model_ec_104_line,account.group_account_manager,1,1,1,1
-access_vat_report_wizard_user,access_vat_report_wizard_user,model_vat_report_wizard,account.group_account_user,1,1,1,1
+access_ec_104_line_user,access_ec_104_line_user,l10n_ec_reports_vat.model_ec_104_line,account.group_account_user,1,0,0,0
+access_ec_104_line_manager,access_ec_104_line_manager,l10n_ec_reports_vat.model_ec_104_line,account.group_account_manager,1,1,1,1
+access_vat_report_wizard_user,access_vat_report_wizard_user,l10n_ec_reports_vat.model_vat_report_wizard,account.group_account_user,1,1,1,1
