@@ -1,0 +1,60 @@
+ECUADOR REPORTS - WIZARDS AND ACTIONS RESTORED
+============================================
+
+✅ PROBLEM IDENTIFIED:
+The menus were only showing configuration because the action references were missing from the menu items.
+
+✅ SOLUTIONS APPLIED:
+
+1. RESTORED WIZARD ACTION REFERENCES:
+   ✓ VAT Reports menu → action="action_vat_report_wizard"
+   ✓ ATS SRI Reports menu → action="action_ats_report_wizard"  
+   ✓ Form 103 Reports menu → action="action_withholding_report_wizard"
+   ✓ Form 104 Line Mappings → action="action_ec_104_line"
+
+2. MOVED TO ACCOUNTING → REPORTS:
+   ✓ Changed parent to "account.menu_finance_reports"
+   ✓ Ecuador Reports now under Accounting → Reports
+
+CURRENT MENU STRUCTURE:
+┌─ Accounting
+│  └─ Reports
+│     └─ Ecuador Reports
+│        ├─ VAT Reports (Forms 103/104) → Opens VAT Wizard
+│        │  └─ Company, Month, Year selection
+│        │  └─ Generate Report, Export CSV, Print PDF buttons
+│        │
+│        ├─ ATS SRI Reports → Opens ATS Wizard  
+│        │  └─ Company, Month, Year selection
+│        │  └─ Generate Report, Export XML ZIP buttons
+│        │
+│        ├─ Form 103 (Withholdings) → Opens Form 103 Wizard
+│        │  └─ Company, Month, Year selection
+│        │  └─ Generate Report, Export buttons
+│        │
+│        └─ Ecuador Configuration
+│           ├─ Form 104 Line Mappings → Opens 104 Line Configuration
+│           └─ ATS Catalogs → Opens Catalog Management
+│              ├─ ID Types
+│              ├─ Document Types
+│              ├─ Payment Methods
+│              └─ Sustain Codes
+
+WIZARD FEATURES AVAILABLE:
+✓ VAT Report Wizard: Company + Month + Year → PDF + CSV export
+✓ ATS SRI Wizard: Company + Month + Year → XML ZIP export  
+✓ Form 103 Wizard: Company + Month + Year → Report export
+✓ All wizards have proper action buttons for export
+
+INSTALLATION STEPS:
+1. Upgrade l10n_ec_reports_vat (creates Ecuador Reports under Accounting → Reports)
+2. Upgrade l10n_ec_reports_ats_sri (adds ATS wizard functionality)
+3. Upgrade l10n_ec_reports_103 (adds Form 103 wizard functionality)
+
+EXPECTED RESULT:
+Navigate to: Accounting → Reports → Ecuador Reports
+- All report wizards should open when clicked
+- Each wizard will have company/month/year selection
+- Export buttons (CSV/PDF/XML) will be functional
+
+The actual report wizards are now properly linked to the menus!
