@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
 
-        <!-- Form 103 Withholdings Menu -->
-        <menuitem id="menu_ec_103_reports"
-                  name="Form 103 (Withholdings)"
-                  parent="l10n_ec_reports_vat.menu_ec_reports_root"
-                  action="action_withholding_report_wizard"
-                  sequence="30"
-                  groups="account.group_account_user,account.group_account_manager"/>
+    <!-- Form 103 Withholdings Menu -->
+    <menuitem id="menu_ec_103_reports"
+              name="Form 103 (Withholdings)"
+              parent="l10n_ec_reports_vat.menu_ec_reports_root"
+              action="action_withholding_report_wizard"
+              sequence="30"
+              groups="account.group_account_user,account.group_account_manager"/>
 
-    </data>
 </odoo>
