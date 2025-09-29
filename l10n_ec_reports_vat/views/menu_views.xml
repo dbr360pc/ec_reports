@@ -3,8 +3,9 @@
 
     <!-- Ecuador Reports Root Menu - Main Navigation Bar -->
     <menuitem id="menu_ec_reports_root" 
-              name="Ecuador Reports" 
+              name="Reports" 
               web_icon="l10n_ec_reports_vat,static/description/icon.png"
+                parent="account.menu_finance_reports"
               sequence="50"/>
 
     <!-- VAT Report Menu -->
