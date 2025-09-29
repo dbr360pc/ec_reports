@@ -1,0 +1,44 @@
+ECUADOR REPORTS - INSTALLATION STRATEGY
+=====================================
+
+PROBLEM ANALYSIS:
+- Modules have circular menu dependencies
+- Form 103 and ATS modules reference VAT module menus that don't exist yet
+- Need to install in stages
+
+SOLUTION - PHASED INSTALLATION:
+
+PHASE 1: INSTALL ALL MODULES WITH TEMPORARY MENUS
+================================================
+STATUS: ✅ READY - Temporary menu structure created
+
+All modules now use direct parents temporarily:
+- l10n_ec_reports_vat → Uses account.menu_finance_reports 
+- l10n_ec_reports_103 → Uses account.menu_finance_reports
+- l10n_ec_reports_ats_sri → Uses account.menu_finance_reports
+
+ACTION: Install all three modules now (any order)
+1. Install l10n_ec_reports_vat
+2. Install l10n_ec_reports_103  
+3. Install l10n_ec_reports_ats_sri
+
+PHASE 2: FIX MENU STRUCTURE AFTER INSTALLATION
+=============================================
+STATUS: ⏳ PENDING - After all modules are installed
+
+After successful installation:
+1. Update Form 103 menu to use proper parent
+2. Update ATS menu to use proper parent  
+3. Upgrade modules to get final menu structure
+
+CURRENT MODULE STATUS:
+✅ l10n_ec_reports_vat - Ready to install (creates menu_ec_reports_root)
+✅ l10n_ec_reports_103 - Ready to install (temporary direct parent)
+✅ l10n_ec_reports_ats_sri - Ready to install (temporary direct parent)
+
+EXPECTED RESULT AFTER PHASE 1:
+- Ecuador Reports will appear under Accounting → Reports
+- VAT, ATS, and Form 103 will appear as separate items initially
+- No installation errors should occur
+
+NEXT STEP: Try installing all three modules now!

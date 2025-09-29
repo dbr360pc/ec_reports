@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
-    <!-- ATS Reports Menu -->
+    <!-- Temporary: Use direct parent until VAT module is installed -->
     <menuitem id="menu_ec_ats_reports"
               name="ATS SRI Reports"
-              parent="l10n_ec_reports_vat.menu_ec_reports_root"
+              parent="account.menu_finance_reports"
               action="action_ats_report_wizard"
-              sequence="20"/>
+              sequence="120"/>
 
     <!-- ATS Catalogs submenu -->
     <menuitem id="menu_ec_ats_catalogs"
               name="ATS Catalogs"
-              parent="l10n_ec_reports_vat.menu_ec_reports_config"
-              sequence="20"/>
+              parent="account.menu_finance_configuration"
+              sequence="120"/>
 
     <menuitem id="menu_ec_ats_id_types"
               name="ID Types"
