@@ -2,17 +2,52 @@
 <odoo>
     
     <!-- Root Ecuador Reports Menu -->
-    <menuitem id="menu_ec_reports_root" 
-              name="Ecuador Reports" 
+    <menuitem id="menu_ec_reports_root"
+              name="Ecuador Reports"
               parent="account.menu_finance_reports"
               sequence="100"/>
 
-    <!-- VAT Reports Menu -->
+    <!-- VAT Reports Action and Menu -->
+    <record id="action_ec_vat_reports" model="ir.actions.act_window">
+        <field name="name">VAT Reports (103/104)</field>
+        <field name="res_model">ec.vat.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    
     <menuitem id="menu_ec_vat_reports"
-              name="VAT Reports (Forms 103/104)"
+              name="VAT Reports (103/104)"
               parent="menu_ec_reports_root"
-              action="action_vat_report_wizard"
+              action="action_ec_vat_reports"
               sequence="10"/>
+
+    <!-- ATS Reports Action and Menu -->
+    <record id="action_ec_ats_reports" model="ir.actions.act_window">
+        <field name="name">ATS SRI Reports</field>
+        <field name="res_model">ec.ats.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    
+    <menuitem id="menu_ec_ats_reports"
+              name="ATS SRI Reports"
+              parent="menu_ec_reports_root"
+              action="action_ec_ats_reports"
+              sequence="20"/>
+
+    <!-- Form 103 Withholdings Action and Menu -->
+    <record id="action_ec_103_reports" model="ir.actions.act_window">
+        <field name="name">Form 103 Withholdings</field>
+        <field name="res_model">ec.withholding.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    
+    <menuitem id="menu_ec_103_reports"
+              name="Form 103 Withholdings"
+              parent="menu_ec_reports_root"
+              action="action_ec_103_reports"
+              sequence="30"/>
 
     <!-- Configuration submenu -->
     <menuitem id="menu_ec_reports_config"
