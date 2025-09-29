@@ -22,6 +22,11 @@
 
 **Root Cause:** Security files used incorrect external ID format for model references
 
+## ❌ Problem 5: Missing Model Fields
+**Error:** `Invalid field 'move_type' on model 'ats.document.type'`
+
+**Root Cause:** Data file referenced fields that didn't exist in the model definition
+
 ## ✅ Solutions Applied
 
 ### 1. Fixed Duplicate Box Codes
@@ -108,6 +113,19 @@ access_ats_id_type_user,access_ats_id_type_user,l10n_ec_reports_ats_sri.model_at
 
 **Added complete model definition for sustain codes referenced in data files.**
 
+### 7. Added Missing Model Fields
+**File:** `l10n_ec_reports_ats_sri/models/ats_catalog.py`
+
+**Added missing `move_type` field to AtsDocumentType model:**
+```python
+move_type = fields.Selection([
+    ('out_invoice', 'Customer Invoice'),
+    ('in_invoice', 'Vendor Bill'),
+    ('out_refund', 'Customer Credit Note'),
+    ('in_refund', 'Vendor Credit Note'),
+], string='Move Type', help='Related account move type for this document')
+```
+
 ## 📋 Final Box Code Mapping (Ecuador Form 104)
 
 | Code | Description | Usage |
@@ -134,7 +152,8 @@ The modules should now install without errors:
 ✅ **All attrs converted** to Odoo 17 direct attribute format  
 ✅ **Complex conditions updated** with proper boolean logic syntax  
 ✅ **Security files fixed** with proper module-prefixed external IDs  
-✅ **Missing models added** (AtsSustainCode) for complete functionality
+✅ **Missing models added** (AtsSustainCode) for complete functionality  
+✅ **Missing fields added** (move_type) to match data file requirements
 
 **Installation Status:**
 All three modules are now **fully compatible with Odoo 17 Community Edition**.

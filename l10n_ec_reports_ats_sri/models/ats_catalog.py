@@ -30,6 +30,12 @@ class AtsDocumentType(models.Model):
 
     name = fields.Char('Description', required=True)
     code = fields.Char('Code', required=True)
+    move_type = fields.Selection([
+        ('out_invoice', 'Customer Invoice'),
+        ('in_invoice', 'Vendor Bill'),
+        ('out_refund', 'Customer Credit Note'),
+        ('in_refund', 'Vendor Credit Note'),
+    ], string='Move Type', help='Related account move type for this document')
     active = fields.Boolean('Active', default=True)
 
     @api.constrains('code')
