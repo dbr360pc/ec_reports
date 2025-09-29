@@ -78,7 +78,7 @@
         
         <record id="ec_104_line_vat_collected" model="ec.104.line">
             <field name="name">IVA Causado</field>
-            <field name="code">731</field>
+            <field name="code">799</field>
             <field name="sequence">40</field>
             <field name="section">other</field>
             <field name="report_type">tax</field>

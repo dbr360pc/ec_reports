@@ -170,7 +170,8 @@ class VatReportWizard(models.TransientModel):
         # Map based on tax group codes from v9 (adapted for v17)
         if 'vat' in tax_group_code.lower() or tax.amount > 0:  # VAT taxes
             if move_type in ['out_invoice', 'out_refund']:
-                codes.append('521')  # Sales VAT
+                codes.append('521')  # Sales VAT (base)
+                codes.append('799')  # VAT collected (tax amount)
             elif move_type in ['in_invoice', 'in_refund']:
                 codes.append('611')  # Purchase VAT
                 codes.append('741')  # VAT paid (credit)
