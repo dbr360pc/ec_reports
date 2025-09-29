@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Main Menu under Accounting → Reports -->
-    <menuitem id="menu_ecuador_reports" 
-              name="Ecuador Reports" 
-              parent="account.menu_finance_reporting"
-              sequence="100"
-              web_icon="l10n_ec_reports_vat,static/description/icon.png"/>
+    <!-- Root Ecuador Reports Menu -->
+    <menuitem id="menu_ec_reports_root"
+              name="Ecuador Reports"
+              parent="account.menu_finance_reports"
+              sequence="100"/>
 
-    <!-- SRI Reports Submenu -->
-    <menuitem id="menu_sri_reports" 
-              name="SRI Reports" 
-              parent="menu_ecuador_reports"
-              sequence="10"/>
-
-    <!-- VAT Report Menu -->
-    <menuitem id="menu_vat_report_wizard"
+    <!-- VAT Reports Menu -->
+    <menuitem id="menu_ec_vat_reports"
               name="VAT Reports (Forms 103/104)"
-              parent="menu_sri_reports"
+              parent="menu_ec_reports_root"
               action="action_vat_report_wizard"
               sequence="10"/>
 
-    <!-- Configuration Menu -->
-    <menuitem id="menu_sri_config"
-              name="SRI Configuration"
-              parent="account.menu_finance_entries_management"
+    <!-- Configuration submenu -->
+    <menuitem id="menu_ec_reports_config"
+              name="Ecuador Configuration"
+              parent="account.menu_finance_configuration"
               sequence="100"/>
 
-    <!-- 104 Line Mappings Menu -->
-    <menuitem id="menu_ec_104_line"
-              name="104 Form Line Mappings"
-              parent="menu_sri_config"
+    <!-- 104 Line Mappings -->
+    <menuitem id="menu_ec_104_line_mappings"
+              name="Form 104 Line Mappings"
+              parent="menu_ec_reports_config"
               action="action_ec_104_line"
               sequence="10"/>
 
