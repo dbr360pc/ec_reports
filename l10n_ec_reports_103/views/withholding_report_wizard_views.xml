@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Withholding Report Wizard Form View -->
+    <record id="view_withholding_report_wizard_form" model="ir.ui.view">
+        <field name="name">withholding.report.wizard.form</field>
+        <field name="model">withholding.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Form 103 - Withholding Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id" options="{'no_create': True}"/>
+                            <field name="month"/>
+                            <field name="year"/>
+                        </group>
+                        <group string="Report Options">
+                            <field name="include_vat_withholdings"/>
+                            <field name="include_income_withholdings"/>
+                        </group>
+                    </group>
+                    
+                    <div class="oe_chatter" attrs="{'invisible': [('summary_data', '=', False)]}">
+                        <group>
+                            <group>
+                                <label string="Withholding Report Generated Successfully"/>
+                            </group>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Summary" attrs="{'invisible': [('summary_data', '=', False)]}">
+                                <field name="summary_data" widget="text" readonly="1"/>
+                            </page>
+                            <page string="Details" attrs="{'invisible': [('detail_data', '=', False)]}">
+                                <field name="detail_data" widget="text" readonly="1"/>
+                            </page>
+                            <page string="Export" attrs="{'invisible': [('csv_summary_file', '=', False)]}">
+                                <group>
+                                    <field name="csv_summary_file" filename="csv_summary_filename" readonly="1"/>
+                                    <field name="csv_summary_filename" invisible="1"/>
+                                    <field name="csv_detail_file" filename="csv_detail_filename" readonly="1"/>
+                                    <field name="csv_detail_filename" invisible="1"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </div>
+                    
+                </sheet>
+                <footer>
+                    <button name="action_generate_report" string="Generate Report" 
+                            type="object" class="btn-primary" 
+                            attrs="{'invisible': [('summary_data', '!=', False)]}"/>
+                    <button name="action_export_csv" string="Export CSV" 
+                            type="object" class="btn-secondary"
+                            attrs="{'invisible': [('summary_data', '=', False)]}"/>
+                    <button name="action_print_report" string="Print PDF" 
+                            type="object" class="btn-secondary"
+                            attrs="{'invisible': [('summary_data', '=', False)]}"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Withholding Report Wizard Action -->
+    <record id="action_withholding_report_wizard" model="ir.actions.act_window">
+        <field name="name">Form 103 - Withholding Report</field>
+        <field name="res_model">withholding.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

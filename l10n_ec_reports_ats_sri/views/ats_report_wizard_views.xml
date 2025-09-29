@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ATS Report Wizard Form View -->
+    <record id="view_ats_report_wizard_form" model="ir.ui.view">
+        <field name="name">ats.report.wizard.form</field>
+        <field name="model">ats.report.wizard</field>
+        <field name="arch" type="xml">
+            <form string="ATS Report">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="company_id" options="{'no_create': True}"/>
+                            <field name="month"/>
+                            <field name="year"/>
+                        </group>
+                        <group string="Report Options">
+                            <field name="include_sales"/>
+                            <field name="include_purchases"/>
+                            <field name="include_withholdings"/>
+                        </group>
+                    </group>
+                    
+                    <div attrs="{'invisible': [('validation_report', '=', False)]}">
+                        <separator string="Validation Report"/>
+                        <field name="validation_report" widget="html" readonly="1"/>
+                    </div>
+                    
+                    <div attrs="{'invisible': [('xml_file', '=', False)]}">
+                        <separator string="Export Files"/>
+                        <group>
+                            <field name="xml_file" filename="xml_filename" readonly="1"/>
+                            <field name="xml_filename" invisible="1"/>
+                            <field name="zip_file" filename="zip_filename" readonly="1"/>
+                            <field name="zip_filename" invisible="1"/>
+                        </group>
+                    </div>
+                    
+                </sheet>
+                <footer>
+                    <button name="action_generate_report" string="Generate ATS Report" 
+                            type="object" class="btn-primary" 
+                            attrs="{'invisible': [('xml_file', '!=', False)]}"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- ATS Report Wizard Action -->
+    <record id="action_ats_report_wizard" model="ir.actions.act_window">
+        <field name="name">ATS Report</field>
+        <field name="res_model">ats.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

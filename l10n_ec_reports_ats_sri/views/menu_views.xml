@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ATS Report Menu -->
+    <menuitem id="menu_ats_report_wizard"
+              name="ATS Report"
+              parent="l10n_ec_reports_vat.menu_sri_reports"
+              action="action_ats_report_wizard"
+              sequence="20"/>
+
+    <!-- ATS Catalogs Menu -->
+    <menuitem id="menu_ats_catalogs"
+              name="ATS Catalogs"
+              parent="l10n_ec_reports_vat.menu_sri_config"
+              sequence="20"/>
+
+    <menuitem id="menu_ats_id_type"
+              name="ID Types"
+              parent="menu_ats_catalogs"
+              action="action_ats_id_type"
+              sequence="10"/>
+
+    <menuitem id="menu_ats_document_type"
+              name="Document Types"
+              parent="menu_ats_catalogs"
+              action="action_ats_document_type"
+              sequence="20"/>
+
+    <menuitem id="menu_ats_payment_method"
+              name="Payment Methods"
+              parent="menu_ats_catalogs"
+              action="action_ats_payment_method"
+              sequence="30"/>
+
+    <menuitem id="menu_ats_sustain_code"
+              name="Sustain Codes"
+              parent="menu_ats_catalogs"
+              action="action_ats_sustain_code"
+              sequence="40"/>
+
+</odoo>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        
+        <!-- ID Types for Providers -->
+        <record id="ats_id_type_prov_ruc" model="ats.id.type">
+            <field name="name">RUC (Proveedores)</field>
+            <field name="code">01</field>
+        </record>
+        
+        <record id="ats_id_type_prov_cedula" model="ats.id.type">
+            <field name="name">Cédula (Proveedores)</field>
+            <field name="code">02</field>
+        </record>
+        
+        <record id="ats_id_type_prov_pasaporte" model="ats.id.type">
+            <field name="name">Pasaporte (Proveedores)</field>
+            <field name="code">03</field>
+        </record>
+        
+        <!-- ID Types for Clients -->
+        <record id="ats_id_type_cli_ruc" model="ats.id.type">
+            <field name="name">RUC (Clientes)</field>
+            <field name="code">04</field>
+        </record>
+        
+        <record id="ats_id_type_cli_cedula" model="ats.id.type">
+            <field name="name">Cédula (Clientes)</field>
+            <field name="code">05</field>
+        </record>
+        
+        <record id="ats_id_type_cli_pasaporte" model="ats.id.type">
+            <field name="name">Pasaporte (Clientes)</field>
+            <field name="code">06</field>
+        </record>
+        
+        <record id="ats_id_type_consumidor_final" model="ats.id.type">
+            <field name="name">Consumidor Final</field>
+            <field name="code">07</field>
+        </record>
+        
+        <!-- Document Types -->
+        <record id="ats_doc_type_invoice" model="ats.document.type">
+            <field name="name">Factura</field>
+            <field name="code">01</field>
+            <field name="move_type">in_invoice</field>
+        </record>
+        
+        <record id="ats_doc_type_liquidation" model="ats.document.type">
+            <field name="name">Liquidación de compra de bienes o prestación de servicios</field>
+            <field name="code">03</field>
+            <field name="move_type">in_invoice</field>
+        </record>
+        
+        <record id="ats_doc_type_credit_note" model="ats.document.type">
+            <field name="name">Nota de crédito</field>
+            <field name="code">04</field>
+            <field name="move_type">in_refund</field>
+        </record>
+        
+        <record id="ats_doc_type_debit_note" model="ats.document.type">
+            <field name="name">Nota de débito</field>
+            <field name="code">05</field>
+            <field name="move_type">in_refund</field>
+        </record>
+        
+        <record id="ats_doc_type_out_invoice" model="ats.document.type">
+            <field name="name">Factura de venta</field>
+            <field name="code">18</field>
+            <field name="move_type">out_invoice</field>
+        </record>
+        
+        <record id="ats_doc_type_out_credit_note" model="ats.document.type">
+            <field name="name">Nota de crédito de venta</field>
+            <field name="code">04</field>
+            <field name="move_type">out_refund</field>
+        </record>
+        
+        <!-- Payment Methods -->
+        <record id="ats_payment_cash" model="ats.payment.method">
+            <field name="name">Sin utilización del sistema financiero</field>
+            <field name="code">01</field>
+        </record>
+        
+        <record id="ats_payment_check" model="ats.payment.method">
+            <field name="name">Cheque propio</field>
+            <field name="code">02</field>
+        </record>
+        
+        <record id="ats_payment_check_certified" model="ats.payment.method">
+            <field name="name">Cheque certificado</field>
+            <field name="code">03</field>
+        </record>
+        
+        <record id="ats_payment_debit_card" model="ats.payment.method">
+            <field name="name">Tarjeta de débito</field>
+            <field name="code">16</field>
+        </record>
+        
+        <record id="ats_payment_credit_card" model="ats.payment.method">
+            <field name="name">Tarjeta de crédito</field>
+            <field name="code">19</field>
+        </record>
+        
+        <record id="ats_payment_transfer" model="ats.payment.method">
+            <field name="name">Transferencia bancaria</field>
+            <field name="code">20</field>
+        </record>
+
+        <!-- Sustain Codes (Códigos de Sustento) -->
+        <record id="ats_sustain_general" model="ats.sustain.code">
+            <field name="name">Crédito Tributario para declaración de IVA (servicios y bienes distintos de inventarios y activos fijos)</field>
+            <field name="code">01</field>
+        </record>
+        
+        <record id="ats_sustain_activos" model="ats.sustain.code">
+            <field name="name">Costo o Gasto para declaración de IR (activos fijos)</field>
+            <field name="code">02</field>
+        </record>
+        
+        <record id="ats_sustain_inventarios" model="ats.sustain.code">
+            <field name="name">Inventario - Materia Prima, Insumos y Suministros</field>
+            <field name="code">03</field>
+        </record>
+        
+        <record id="ats_sustain_gastos" model="ats.sustain.code">
+            <field name="name">Inventario - Activos fijos</field>
+            <field name="code">04</field>
+        </record>
+        
+        <record id="ats_sustain_liquidacion" model="ats.sustain.code">
+            <field name="name">Liquidación de gastos de viaje, hospedaje y alimentación</field>
+            <field name="code">05</field>
+        </record>
+
+    </data>
+</odoo>

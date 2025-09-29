@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <!-- EC 104 Line Tree View -->
+    <record id="view_ec_104_line_tree" model="ir.ui.view">
+        <field name="name">ec.104.line.tree</field>
+        <field name="model">ec.104.line</field>
+        <field name="arch" type="xml">
+            <tree string="104 Form Line Mappings">
+                <field name="sequence" widget="handle"/>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="section"/>
+                <field name="report_type"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <!-- EC 104 Line Form View -->
+    <record id="view_ec_104_line_form" model="ir.ui.view">
+        <field name="name">ec.104.line.form</field>
+        <field name="model">ec.104.line</field>
+        <field name="arch" type="xml">
+            <form string="104 Form Line Mapping">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="toggle_active" type="object"
+                                class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"
+                                   options='{"terminology": "archive"}'/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="code"/>
+                            <field name="sequence"/>
+                            <field name="section"/>
+                            <field name="report_type"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Tax Mapping">
+                            <group>
+                                <field name="tax_ids" widget="many2many_tags"/>
+                                <field name="tax_tag_ids" widget="many2many_tags"/>
+                            </group>
+                        </page>
+                        <page string="Notes">
+                            <field name="notes"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- EC 104 Line Action -->
+    <record id="action_ec_104_line" model="ir.actions.act_window">
+        <field name="name">104 Form Line Mappings</field>
+        <field name="res_model">ec.104.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first 104 form line mapping!
+            </p>
+            <p>
+                Map taxes and tax tags to specific boxes in form 104 to generate accurate VAT reports.
+            </p>
+        </field>
+    </record>
+
+</odoo>

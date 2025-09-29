@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Report Definition -->
+    <record id="action_report_vat_103_104" model="ir.actions.report">
+        <field name="name">VAT Report (Form 103/104)</field>
+        <field name="model">vat.report.wizard</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_ec_reports_vat.report_vat_103_104_document</field>
+        <field name="report_file">l10n_ec_reports_vat.report_vat_103_104_document</field>
+        <field name="binding_model_id" ref="model_vat_report_wizard"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <!-- Report Template -->
+    <template id="report_vat_103_104_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="doc">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="row">
+                            <div class="col-12">
+                                <h2>VAT Report (Form 103/104)</h2>
+                                <p>
+                                    <strong>Company:</strong> <span t-field="doc.company_id.name"/><br/>
+                                    <strong>Period:</strong> <t t-esc="doc.month"/>/<t t-esc="doc.year"/><br/>
+                                    <strong>Generated:</strong> <t t-esc="datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')"/>
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <t t-if="doc.summary_data">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>Summary</h3>
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Box Code</th>
+                                                <th>Description</th>
+                                                <th>Section</th>
+                                                <th>Base Amount</th>
+                                                <th>Tax Amount</th>
+                                                <th>Total Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="summary" t-value="eval(doc.summary_data)"/>
+                                            <tr t-foreach="summary" t-as="line">
+                                                <td><t t-esc="line['code']"/></td>
+                                                <td><t t-esc="line['name']"/></td>
+                                                <td><t t-esc="line['section']"/></td>
+                                                <td class="text-right"><t t-esc="'{:,.2f}'.format(line['base_amount'])"/></td>
+                                                <td class="text-right"><t t-esc="'{:,.2f}'.format(line['tax_amount'])"/></td>
+                                                <td class="text-right"><t t-esc="'{:,.2f}'.format(line['total_amount'])"/></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-12">
+                                    <h3>Details</h3>
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Invoice</th>
+                                                <th>Partner</th>
+                                                <th>Date</th>
+                                                <th>Document Type</th>
+                                                <th>Base Amount</th>
+                                                <th>Tax Amount</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <t t-set="details" t-value="eval(doc.detail_data)"/>
+                                            <tr t-foreach="details[:50]" t-as="detail">
+                                                <td><t t-esc="detail['invoice']"/></td>
+                                                <td><t t-esc="detail['partner']"/></td>
+                                                <td><t t-esc="detail['date']"/></td>
+                                                <td><t t-esc="detail['document_type']"/></td>
+                                                <td class="text-right"><t t-esc="'{:,.2f}'.format(detail['base_amount'])"/></td>
+                                                <td class="text-right"><t t-esc="'{:,.2f}'.format(detail['tax_amount'])"/></td>
+                                            </tr>
+                                            <t t-if="len(details) > 50">
+                                                <tr>
+                                                    <td colspan="6" class="text-center">
+                                                        <em>... and <t t-esc="len(details) - 50"/> more records. See CSV export for complete data.</em>
+                                                    </td>
+                                                </tr>
+                                            </t>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

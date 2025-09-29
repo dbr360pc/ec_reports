@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- ATS ID Type Views -->
+    <record id="view_ats_id_type_tree" model="ir.ui.view">
+        <field name="name">ats.id.type.tree</field>
+        <field name="model">ats.id.type</field>
+        <field name="arch" type="xml">
+            <tree string="ATS ID Types">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_ats_id_type_form" model="ir.ui.view">
+        <field name="name">ats.id.type.form</field>
+        <field name="model">ats.id.type</field>
+        <field name="arch" type="xml">
+            <form string="ATS ID Type">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_ats_id_type" model="ir.actions.act_window">
+        <field name="name">ATS ID Types</field>
+        <field name="res_model">ats.id.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ATS Document Type Views -->
+    <record id="view_ats_document_type_tree" model="ir.ui.view">
+        <field name="name">ats.document.type.tree</field>
+        <field name="model">ats.document.type</field>
+        <field name="arch" type="xml">
+            <tree string="ATS Document Types">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="move_type"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_ats_document_type_form" model="ir.ui.view">
+        <field name="name">ats.document.type.form</field>
+        <field name="model">ats.document.type</field>
+        <field name="arch" type="xml">
+            <form string="ATS Document Type">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="move_type"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_ats_document_type" model="ir.actions.act_window">
+        <field name="name">ATS Document Types</field>
+        <field name="res_model">ats.document.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ATS Payment Method Views -->
+    <record id="view_ats_payment_method_tree" model="ir.ui.view">
+        <field name="name">ats.payment.method.tree</field>
+        <field name="model">ats.payment.method</field>
+        <field name="arch" type="xml">
+            <tree string="ATS Payment Methods">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_ats_payment_method_form" model="ir.ui.view">
+        <field name="name">ats.payment.method.form</field>
+        <field name="model">ats.payment.method</field>
+        <field name="arch" type="xml">
+            <form string="ATS Payment Method">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_ats_payment_method" model="ir.actions.act_window">
+        <field name="name">ATS Payment Methods</field>
+        <field name="res_model">ats.payment.method</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- ATS Sustain Code Views -->
+    <record id="view_ats_sustain_code_tree" model="ir.ui.view">
+        <field name="name">ats.sustain.code.tree</field>
+        <field name="model">ats.sustain.code</field>
+        <field name="arch" type="xml">
+            <tree string="ATS Sustain Codes">
+                <field name="code"/>
+                <field name="name"/>
+                <field name="active"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record id="view_ats_sustain_code_form" model="ir.ui.view">
+        <field name="name">ats.sustain.code.form</field>
+        <field name="model">ats.sustain.code</field>
+        <field name="arch" type="xml">
+            <form string="ATS Sustain Code">
+                <sheet>
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_ats_sustain_code" model="ir.actions.act_window">
+        <field name="name">ATS Sustain Codes</field>
+        <field name="res_model">ats.sustain.code</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
