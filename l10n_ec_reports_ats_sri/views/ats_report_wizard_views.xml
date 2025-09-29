@@ -41,6 +41,9 @@
                     <button name="action_generate_report" string="Generate ATS Report" 
                             type="object" class="btn-primary" 
                             invisible="xml_file != False"/>
+                    <button name="action_export_xml_zip" string="Export XML ZIP" 
+                            type="object" class="btn-secondary"
+                            invisible="xml_file == False"/>
                     <button string="Close" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

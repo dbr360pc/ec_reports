@@ -420,6 +420,49 @@ class AtsReportWizard(models.TransientModel):
             SubElement(detalle_compras, 'secModificado').text = sequential
             SubElement(detalle_compras, 'autModificado').text = original_move.ref or '1234567890'
 
+    def action_export_xml_zip(self):
+        """Export ATS report as XML ZIP file"""
+        self.ensure_one()
+        
+        if not self.xml_file:
+            raise UserError("No ATS data to export. Please generate the report first.")
+        
+        # Create ZIP file containing the XML
+        zip_buffer = io.BytesIO()
+        with zipfile.ZipFile(zip_buffer, 'w', zipfile.ZIP_DEFLATED) as zip_file:
+            # Add XML file to ZIP
+            xml_content = base64.b64decode(self.xml_file)
+            zip_file.writestr(self.xml_filename, xml_content)
+        
+        zip_content = zip_buffer.getvalue()
+        zip_buffer.close()
+        
+        # Create ZIP filename
+        month_name = dict(self._fields['month'].selection)[self.month]
+        zip_filename = f"ATS_SRI_{self.company_id.vat or 'COMPANY'}_{month_name}_{self.year}.zip"
+        
+        # Create attachment
+        attachment = self.env['ir.attachment'].create({
+            'name': zip_filename,
+            'datas': base64.b64encode(zip_content),
+            'res_model': self._name,
+            'res_id': self.id,
+            'mimetype': 'application/zip',
+        })
+        
+        # Update wizard with ZIP file info
+        self.write({
+            'zip_file': attachment.datas,
+            'zip_filename': zip_filename,
+        })
+        
+        # Return download action
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/web/content/{attachment.id}?download=true',
+            'target': 'self',
+        }
+
     def action_open_move(self):
         """Open account move from validation report"""
         move_id = self.env.context.get('move_id')

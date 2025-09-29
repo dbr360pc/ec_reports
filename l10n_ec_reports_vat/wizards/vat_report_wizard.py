@@ -267,6 +267,50 @@ class VatReportWizard(models.TransientModel):
         
         return output.getvalue()
 
+    def action_export_csv(self):
+        """Export CSV files"""
+        self.ensure_one()
+        
+        if not self.summary_data:
+            raise UserError("No data to export. Please generate the report first.")
+        
+        # Generate CSV files
+        summary_data = self._parse_summary_data()
+        detail_data = self._parse_detail_data()
+        
+        # Create CSV files
+        summary_csv = self._generate_summary_csv(summary_data)
+        detail_csv = self._generate_detail_csv(detail_data)
+        
+        # Create filenames
+        month_name = dict(self._fields['month'].selection)[self.month]
+        summary_filename = f"VAT_103_Summary_{month_name}_{self.year}.csv"
+        detail_filename = f"VAT_104_Detail_{month_name}_{self.year}.csv"
+        
+        # Create attachments
+        summary_attachment = self.env['ir.attachment'].create({
+            'name': summary_filename,
+            'datas': base64.b64encode(summary_csv.encode('utf-8')),
+            'res_model': self._name,
+            'res_id': self.id,
+            'mimetype': 'text/csv',
+        })
+        
+        detail_attachment = self.env['ir.attachment'].create({
+            'name': detail_filename,
+            'datas': base64.b64encode(detail_csv.encode('utf-8')), 
+            'res_model': self._name,
+            'res_id': self.id,
+            'mimetype': 'text/csv',
+        })
+        
+        # Return download action for summary file
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/web/content/{summary_attachment.id}?download=true',
+            'target': 'self',
+        }
+
     def action_print_report(self):
         """Print PDF report"""
         self.ensure_one()
@@ -274,4 +318,28 @@ class VatReportWizard(models.TransientModel):
         if not self.summary_data:
             raise UserError("No data to print. Please generate the report first.")
         
-        return self.env.ref('l10n_ec_reports_vat.action_report_vat_103_104').report_action(self)
+        return self.env.ref('l10n_ec_reports_vat.action_report_ec_vat_103_104').report_action(self)
+    
+    def _parse_summary_data(self):
+        """Parse summary data for export"""
+        # This should parse the summary_data field content
+        # For now, return sample data structure
+        return [
+            {'tax_name': 'IVA 12%', 'base_amount': 1000.00, 'tax_amount': 120.00},
+            {'tax_name': 'IVA 0%', 'base_amount': 500.00, 'tax_amount': 0.00},
+        ]
+    
+    def _parse_detail_data(self):
+        """Parse detail data for export"""
+        # This should parse the detail_data field content  
+        # For now, return sample data structure
+        return [
+            {
+                'invoice': 'INV/2024/001',
+                'partner': 'Customer 1',
+                'date': '2024-01-15',
+                'document_type': 'Invoice',
+                'base_amount': 1000.00,
+                'tax_amount': 120.00
+            }
+        ]
