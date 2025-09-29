@@ -1,36 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <!-- Main Menu -->
-    <menuitem id="menu_ecuador_reports" 
-              name="Ecuador Reports" 
-              parent="account.menu_finance_reports"
-              sequence="100"/>
-
-    <!-- SRI Reports Submenu -->
-    <menuitem id="menu_sri_reports" 
-              name="SRI Reports" 
-              parent="menu_ecuador_reports"
-              sequence="10"/>
-
-    <!-- VAT Report Menu -->
-    <menuitem id="menu_vat_report_wizard"
-              name="VAT Reports (Forms 103/104)"
-              parent="menu_sri_reports"
-              action="action_vat_report_wizard"
-              sequence="10"/>
-
-    <!-- Configuration Menu -->
-    <menuitem id="menu_sri_config"
-              name="SRI Configuration"
-              parent="account.menu_finance_configuration"
-              sequence="100"/>
-
-    <!-- 104 Line Mappings Menu -->
-    <menuitem id="menu_ec_104_line"
-              name="104 Form Line Mappings"
-              parent="menu_sri_config"
-              action="action_ec_104_line"
-              sequence="10"/>
-
+    <!-- Legacy menu file - menus moved to ec_reports_menu.xml -->
 </odoo>

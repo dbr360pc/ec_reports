@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-    <!-- Form 103 Withholding Report Menu -->
-    <menuitem id="menu_withholding_report_wizard"
-              name="Form 103 (Withholdings)"
-              parent="l10n_ec_reports_vat.menu_sri_reports"
-              action="action_withholding_report_wizard"
-              sequence="15"/>
-
+    <!-- Legacy menu file - menus moved to l10n_ec_reports_vat ec_reports_menu.xml -->
 </odoo>
