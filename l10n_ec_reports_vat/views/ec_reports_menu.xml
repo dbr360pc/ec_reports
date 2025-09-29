@@ -4,7 +4,7 @@
     <!-- Root Ecuador Reports Menu -->
     <menuitem id="menu_ec_reports_root"
               name="Ecuador Reports"
-              parent="account.menu_finance_reports"
+              parent="account.menu_finance"
               sequence="100"/>
 
     <!-- VAT Reports Action and Menu -->
@@ -25,7 +25,7 @@
     <!-- Configuration submenu -->
     <menuitem id="menu_ec_reports_config"
               name="Ecuador Configuration"
-              parent="account.menu_finance_configuration"
+              parent="account.menu_account_config"
               sequence="100"/>
 
     <!-- 104 Line Mappings -->
