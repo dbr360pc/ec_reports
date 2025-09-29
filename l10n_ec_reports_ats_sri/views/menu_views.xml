@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <!-- ATS Reports under Ecuador Reports -->
-        <menuitem id="menu_ec_ats_reports"
-                  name="ATS SRI Reports"
-                  parent="l10n_ec_reports_vat.menu_ec_reports_root"
-                  action="action_ats_report_wizard"
-                  sequence="20"/>
+    <!-- ATS Reports under Ecuador Reports -->
+    <menuitem id="menu_ec_ats_reports"
+              name="ATS SRI Reports"
+              parent="l10n_ec_reports_vat.menu_ec_reports_root"
+              sequence="20"/>
 
-        <!-- ATS Catalogs submenu -->
-        <menuitem id="menu_ec_ats_catalogs"
-                  name="ATS Catalogs"
-                  parent="l10n_ec_reports_vat.menu_ec_reports_config"
-                  sequence="120"/>
+    <!-- ATS Catalogs submenu -->
+    <menuitem id="menu_ec_ats_catalogs"
+              name="ATS Catalogs"
+              parent="l10n_ec_reports_vat.menu_ec_reports_config"
+              sequence="120"/>
 
-        <menuitem id="menu_ec_ats_id_types"
-                  name="ID Types"
-                  parent="menu_ec_ats_catalogs"
-                  action="action_ats_id_type"
-                  sequence="10"/>
+    <menuitem id="menu_ec_ats_id_types"
+              name="ID Types"
+              parent="menu_ec_ats_catalogs"
+              sequence="10"/>
 
-        <menuitem id="menu_ec_ats_document_types"
-                  name="Document Types"
-                  parent="menu_ec_ats_catalogs"
-                  action="action_ats_document_type"
-                  sequence="20"/>
+    <menuitem id="menu_ec_ats_document_types"
+              name="Document Types"
+              parent="menu_ec_ats_catalogs"
+              sequence="20"/>
 
-        <menuitem id="menu_ec_ats_payment_methods"
-                  name="Payment Methods"
-                  parent="menu_ec_ats_catalogs"
-                  action="action_ats_payment_method"
-                  sequence="30"/>
+    <menuitem id="menu_ec_ats_payment_methods"
+              name="Payment Methods"
+              parent="menu_ec_ats_catalogs"
+              sequence="30"/>
 
-        <menuitem id="menu_ec_ats_sustain_codes"
-                  name="Sustain Codes"
-                  parent="menu_ec_ats_catalogs"
-                  action="action_ats_sustain_code"
-                  sequence="40"/>
-    </data>
+    <menuitem id="menu_ec_ats_sustain_codes"
+              name="Sustain Codes"
+              parent="menu_ec_ats_catalogs"
+              sequence="40"/>
 </odoo>
