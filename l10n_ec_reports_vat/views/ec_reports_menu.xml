@@ -10,9 +10,10 @@
     <!-- VAT Reports Action and Menu -->
     <record id="action_ec_vat_reports" model="ir.actions.act_window">
         <field name="name">VAT Reports (103/104)</field>
-        <field name="res_model">ec.vat.report.wizard</field>
+        <field name="res_model">vat.report.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
+        <field name="groups_id" eval="[(6, 0, [ref('account.group_account_user'), ref('account.group_account_manager')])]"/>
     </record>
     
     <menuitem id="menu_ec_vat_reports"
@@ -24,9 +25,10 @@
     <!-- ATS Reports Action and Menu -->
     <record id="action_ec_ats_reports" model="ir.actions.act_window">
         <field name="name">ATS SRI Reports</field>
-        <field name="res_model">ec.ats.report.wizard</field>
+        <field name="res_model">ats.report.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
+        <field name="groups_id" eval="[(6, 0, [ref('account.group_account_user'), ref('account.group_account_manager')])]"/>
     </record>
     
     <menuitem id="menu_ec_ats_reports"
@@ -38,9 +40,10 @@
     <!-- Form 103 Withholdings Action and Menu -->
     <record id="action_ec_103_reports" model="ir.actions.act_window">
         <field name="name">Form 103 Withholdings</field>
-        <field name="res_model">ec.withholding.report.wizard</field>
+        <field name="res_model">withholding.report.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
+        <field name="groups_id" eval="[(6, 0, [ref('account.group_account_user'), ref('account.group_account_manager')])]"/>
     </record>
     
     <menuitem id="menu_ec_103_reports"

@@ -274,9 +274,9 @@ class VatReportWizard(models.TransientModel):
         if not self.summary_data:
             raise UserError("No data to export. Please generate the report first.")
         
-        # Generate CSV files
-        summary_data = self._parse_summary_data()
-        detail_data = self._parse_detail_data()
+        # Parse data from stored fields
+        summary_data = eval(self.summary_data) if self.summary_data else []
+        detail_data = eval(self.detail_data) if self.detail_data else []
         
         # Create CSV files
         summary_csv = self._generate_summary_csv(summary_data)
@@ -318,28 +318,37 @@ class VatReportWizard(models.TransientModel):
         if not self.summary_data:
             raise UserError("No data to print. Please generate the report first.")
         
-        return self.env.ref('l10n_ec_reports_vat.action_report_ec_vat_103_104').report_action(self)
+        return self.env.ref('l10n_ec_reports_vat.action_report_vat_103_104').report_action(self)
     
-    def _parse_summary_data(self):
-        """Parse summary data for export"""
-        # This should parse the summary_data field content
-        # For now, return sample data structure
-        return [
-            {'tax_name': 'IVA 12%', 'base_amount': 1000.00, 'tax_amount': 120.00},
-            {'tax_name': 'IVA 0%', 'base_amount': 500.00, 'tax_amount': 0.00},
-        ]
-    
-    def _parse_detail_data(self):
-        """Parse detail data for export"""
-        # This should parse the detail_data field content  
-        # For now, return sample data structure
-        return [
-            {
-                'invoice': 'INV/2024/001',
-                'partner': 'Customer 1',
-                'date': '2024-01-15',
-                'document_type': 'Invoice',
-                'base_amount': 1000.00,
-                'tax_amount': 120.00
-            }
-        ]
+    def action_export_detail_csv(self):
+        """Export detail CSV file separately"""
+        self.ensure_one()
+        
+        if not self.detail_data:
+            raise UserError("No detail data to export. Please generate the report first.")
+        
+        # Parse detail data
+        detail_data = eval(self.detail_data) if self.detail_data else []
+        
+        # Create detail CSV
+        detail_csv = self._generate_detail_csv(detail_data)
+        
+        # Create filename
+        month_name = dict(self._fields['month'].selection)[self.month]
+        detail_filename = f"VAT_104_Detail_{month_name}_{self.year}.csv"
+        
+        # Create attachment
+        detail_attachment = self.env['ir.attachment'].create({
+            'name': detail_filename,
+            'datas': base64.b64encode(detail_csv.encode('utf-8')), 
+            'res_model': self._name,
+            'res_id': self.id,
+            'mimetype': 'text/csv',
+        })
+        
+        # Return download action
+        return {
+            'type': 'ir.actions.act_url',
+            'url': f'/web/content/{detail_attachment.id}?download=true',
+            'target': 'self',
+        }

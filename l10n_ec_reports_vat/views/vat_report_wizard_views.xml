@@ -6,35 +6,45 @@
         <field name="name">vat.report.wizard.form</field>
         <field name="model">vat.report.wizard</field>
         <field name="arch" type="xml">
-            <form string="VAT Report (Form 103/104)">
+            <form string="VAT Report (Forms 103/104)">
                 <sheet>
+                    <div class="oe_title">
+                        <h1>Ecuador VAT Report</h1>
+                        <h3>Forms 103/104 Generation</h3>
+                    </div>
+                    
                     <group>
-                        <group>
+                        <group string="Report Parameters">
                             <field name="company_id" options="{'no_create': True}"/>
                             <field name="month"/>
                             <field name="year"/>
                         </group>
                     </group>
                     
-                    <div class="oe_chatter" invisible="summary_data == False">
+                    <div class="alert alert-info" invisible="summary_data != False">
+                        <strong>Instructions:</strong><br/>
+                        1. Select company, month and year<br/>
+                        2. Click "Generate Report" to process VAT data<br/>
+                        3. Use export buttons to download CSV files or PDF report
+                    </div>
+                    
+                    <div invisible="summary_data == False">
                         <div class="alert alert-success" role="alert">
-                            <strong>Report Generated Successfully!</strong> Use the tabs below to view the results.
+                            <strong>✓ Report Generated Successfully!</strong> Use the export buttons below or view details in the tabs.
                         </div>
                         
                         <notebook>
-                            <page string="Summary" invisible="summary_data == False">
+                            <page string="Summary Report" invisible="summary_data == False">
+                                <div class="alert alert-info">
+                                    <strong>Form 103 Summary:</strong> VAT summary by tax codes and amounts.
+                                </div>
                                 <field name="summary_data" widget="text" readonly="1"/>
                             </page>
-                            <page string="Details" invisible="detail_data == False">
+                            <page string="Detailed Transactions" invisible="detail_data == False">
+                                <div class="alert alert-info">
+                                    <strong>Form 104 Details:</strong> Individual transaction details supporting the summary.
+                                </div>
                                 <field name="detail_data" widget="text" readonly="1"/>
-                            </page>
-                            <page string="Export" invisible="csv_summary_file == False">
-                                <group>
-                                    <field name="csv_summary_file" filename="csv_summary_filename" readonly="1"/>
-                                    <field name="csv_summary_filename" invisible="1"/>
-                                    <field name="csv_detail_file" filename="csv_detail_filename" readonly="1"/>
-                                    <field name="csv_detail_filename" invisible="1"/>
-                                </group>
                             </page>
                         </notebook>
                     </div>
@@ -44,13 +54,16 @@
                     <button name="action_generate_report" string="Generate Report" 
                             type="object" class="btn-primary" 
                             invisible="summary_data != False"/>
-                    <button name="action_export_csv" string="Export CSV" 
-                            type="object" class="btn-secondary"
+                    <button name="action_export_csv" string="Export Summary CSV" 
+                            type="object" class="btn-success"
                             invisible="summary_data == False"/>
-                    <button name="action_print_report" string="Print PDF" 
-                            type="object" class="btn-secondary"
+                    <button name="action_export_detail_csv" string="Export Detail CSV" 
+                            type="object" class="btn-success"
+                            invisible="detail_data == False"/>
+                    <button name="action_print_report" string="Export PDF" 
+                            type="object" class="btn-info"
                             invisible="summary_data == False"/>
-                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    <button string="Close" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>
         </field>

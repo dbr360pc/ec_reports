@@ -6,10 +6,15 @@
         <field name="name">ats.report.wizard.form</field>
         <field name="model">ats.report.wizard</field>
         <field name="arch" type="xml">
-            <form string="ATS Report">
+            <form string="ATS SRI Report">
                 <sheet>
+                    <div class="oe_title">
+                        <h1>ATS SRI Report</h1>
+                        <h3>Anexo Transaccional Simplificado</h3>
+                    </div>
+                    
                     <group>
-                        <group>
+                        <group string="Report Parameters">
                             <field name="company_id" options="{'no_create': True}"/>
                             <field name="month"/>
                             <field name="year"/>
@@ -21,13 +26,27 @@
                         </group>
                     </group>
                     
+                    <div class="alert alert-info" invisible="xml_file != False">
+                        <strong>Instructions:</strong><br/>
+                        1. Select company, month and year<br/>
+                        2. Choose which transaction types to include<br/>
+                        3. Click "Generate ATS Report" to create XML<br/>
+                        4. Download the ZIP file for SRI submission
+                    </div>
+                    
                     <div invisible="validation_report == False">
+                        <div class="alert alert-success">
+                            <strong>✓ ATS Report Generated Successfully!</strong> 
+                        </div>
                         <separator string="Validation Report"/>
                         <field name="validation_report" widget="html" readonly="1"/>
                     </div>
                     
                     <div invisible="xml_file == False">
-                        <separator string="Export Files"/>
+                        <separator string="Generated Files"/>
+                        <div class="alert alert-success">
+                            <strong>Files ready for download:</strong> Use the "Export XML ZIP" button to download the file for SRI submission.
+                        </div>
                         <group>
                             <field name="xml_file" filename="xml_filename" readonly="1"/>
                             <field name="xml_filename" invisible="1"/>
