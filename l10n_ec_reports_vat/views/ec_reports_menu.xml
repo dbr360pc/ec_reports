@@ -12,13 +12,12 @@
               name="Ecuador Reports"
               sequence="96"/>
 
-    <!-- Configuration submenu -->
+    <!-- Configuration Menu - Root Level -->
     <menuitem id="menu_ec_reports_config"
               name="Ecuador Configuration"
-              parent="account.menu_configuration"
-              sequence="100"/>
+              sequence="97"/>
 
-    <!-- 104 Line Mappings -->
+    <!-- 104 Line Mappings under Ecuador Configuration -->
     <menuitem id="menu_ec_104_line_mappings"
               name="Form 104 Line Mappings"
               parent="menu_ec_reports_config"
