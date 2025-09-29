@@ -4,7 +4,7 @@
     <!-- Temporary: Use direct parent until VAT module is installed -->
     <menuitem id="menu_ec_103_reports"
               name="Form 103 (Withholdings)"
-              parent="account.menu_finance_reporting"
+              parent="account.menu_finance"
               action="action_withholding_report_wizard"
               sequence="130"/>
 
