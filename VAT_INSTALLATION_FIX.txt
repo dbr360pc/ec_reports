@@ -1,0 +1,29 @@
+VAT MODULE INSTALLATION FIX
+===========================
+
+PROBLEM IDENTIFIED:
+- Menu trying to reference actions before they're loaded
+- action_vat_report_wizard doesn't exist when menu_views.xml is processed
+- action_ec_104_line doesn't exist when menu_views.xml is processed
+
+SOLUTION APPLIED:
+✅ Removed action references temporarily from menu items:
+   - menu_ec_vat_reports (removed action="action_vat_report_wizard")  
+   - menu_ec_104_line_mappings (removed action="action_ec_104_line")
+
+CURRENT STATUS:
+- Menus will be created as containers without actions
+- Actions will be created by wizard/view files later in the process
+- After installation, we can reconnect the actions to menus
+
+INSTALLATION RESULT EXPECTED:
+- VAT module should install successfully now
+- Menu structure will be created
+- Individual action connections can be fixed post-installation
+
+NEXT STEPS:
+1. Try installing l10n_ec_reports_vat again
+2. Should work without RPC errors now
+3. After installation, we can update menus to include actions
+
+The module will install with menu structure intact, just without the action connections initially.

@@ -7,11 +7,10 @@
               parent="account.menu_finance_reports"
               sequence="100"/>
 
-    <!-- VAT Reports Menu -->
+    <!-- VAT Reports Menu (temporarily without action) -->
     <menuitem id="menu_ec_vat_reports"
               name="VAT Reports (Forms 103/104)"
               parent="menu_ec_reports_root"
-              action="action_vat_report_wizard"
               sequence="10"/>
 
     <!-- Configuration submenu -->
@@ -20,11 +19,10 @@
               parent="account.menu_finance_configuration"
               sequence="100"/>
 
-    <!-- 104 Line Mappings -->
+    <!-- 104 Line Mappings (temporarily without action) -->
     <menuitem id="menu_ec_104_line_mappings"
               name="Form 104 Line Mappings"
               parent="menu_ec_reports_config"
-              action="action_ec_104_line"
               sequence="10"/>
 
 </odoo>
