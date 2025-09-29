@@ -7,19 +7,11 @@
               parent="account.menu_finance"
               sequence="100"/>
 
-    <!-- VAT Reports Action and Menu -->
-    <record id="action_ec_vat_reports" model="ir.actions.act_window">
-        <field name="name">VAT Reports (103/104)</field>
-        <field name="res_model">vat.report.wizard</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-        <field name="groups_id" eval="[(6, 0, [ref('account.group_account_user'), ref('account.group_account_manager')])]"/>
-    </record>
-    
+    <!-- VAT Reports Menu -->
     <menuitem id="menu_ec_vat_reports"
               name="VAT Reports (103/104)"
               parent="menu_ec_reports_root"
-              action="action_ec_vat_reports"
+              action="action_vat_report_wizard"
               sequence="10"/>
 
     <!-- Configuration submenu -->
