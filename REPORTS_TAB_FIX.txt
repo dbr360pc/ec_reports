@@ -1,0 +1,37 @@
+REPORTS TAB NOT SHOWING - DIAGNOSIS & FIX
+========================================
+
+PROBLEM IDENTIFIED:
+- Used wrong parent menu: account.menu_finance_reports
+- Correct parent should be: account.menu_finance_reporting
+
+CHANGES MADE:
+✅ Fixed VAT module parent: account.menu_finance_reports → account.menu_finance_reporting  
+✅ Fixed Form 103 module parent: account.menu_finance_reports → account.menu_finance_reporting
+✅ Fixed ATS module parent: account.menu_finance_reports → account.menu_finance_reporting
+
+NEXT STEPS:
+
+1. UPGRADE ALL MODULES:
+   Since we changed the parent menus, you need to upgrade all modules:
+   - Upgrade l10n_ec_reports_vat
+   - Upgrade l10n_ec_reports_103  
+   - Upgrade l10n_ec_reports_ats_sri
+
+2. CHECK MENU LOCATION:
+   After upgrading, look for Ecuador Reports under:
+   - Accounting → Reporting (not Reports)
+   - OR Invoicing → Reporting
+
+3. ALTERNATIVE LOCATIONS TO CHECK:
+   If still not visible, check these menu paths:
+   - Accounting → Reporting → Ecuador Reports
+   - Invoicing → Reporting → Ecuador Reports  
+   - Apps → Search "Ecuador" to verify modules are installed
+
+TROUBLESHOOTING:
+- Clear browser cache after upgrade
+- Refresh the page (F5)
+- Log out and log back in to refresh menu cache
+
+The parent "account.menu_finance_reporting" is the correct location for accounting reports in Odoo 17.

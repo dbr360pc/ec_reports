@@ -4,7 +4,7 @@
     <!-- Root Ecuador Reports Menu -->
     <menuitem id="menu_ec_reports_root"
               name="Ecuador Reports"
-              parent="account.menu_finance_reports"
+              parent="account.menu_finance_reporting"
               sequence="100"/>
 
     <!-- VAT Reports Menu (temporarily without action) -->
