@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Ecuador Reports Root Menu - Top Level (guaranteed to work) -->
+    <!-- Ecuador Reports Root Menu -->
     <menuitem id="menu_ec_reports_root" 
               name="Ecuador Reports" 
-              sequence="50"/>
+              sequence="50"
+              web_icon="l10n_ec_reports_vat,static/description/icon.png"/>
 
     <!-- VAT Report Menu -->
     <menuitem id="menu_ec_vat_reports"

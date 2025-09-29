@@ -1,0 +1,80 @@
+ECUADOR REPORTS - WIZARD IMPLEMENTATION GUIDE
+==========================================
+
+✅ CURRENT STATUS:
+- Configuration menus working ✓
+- VAT and ATS wizards implemented ✓  
+- Export functionality coded ✓
+- Need to ensure wizards appear in menus ✓
+
+🎯 WIZARD FUNCTIONALITY:
+
+1. VAT REPORTS WIZARD (Forms 103/104):
+   Location: Ecuador Reports → VAT Reports (Forms 103/104)
+   Features:
+   ✓ Company, Month, Year selection
+   ✓ Generate Report button
+   ✓ Export CSV button (Summary + Detail files)
+   ✓ Print PDF button (QWeb template)
+   ✓ Uses ir.attachment + ir.actions.act_url pattern
+
+2. ATS SRI REPORTS WIZARD:
+   Location: Ecuador Reports → ATS SRI Reports  
+   Features:
+   ✓ Company, Month, Year selection
+   ✓ Report options (Sales, Purchases, Withholdings)
+   ✓ Generate ATS Report button
+   ✓ Export XML ZIP button
+   ✓ Uses ir.attachment + ir.actions.act_url pattern
+
+🔧 INSTALLATION STEPS:
+
+STEP 1: UPGRADE MODULES
+1. Go to Apps → Remove "Apps" filter
+2. Search "Ecuador"
+3. Upgrade in this exact order:
+   a) l10n_ec_reports_vat (First - creates root menu)
+   b) l10n_ec_reports_ats_sri (Second - ATS functionality) 
+   c) l10n_ec_reports_103 (Third - Form 103)
+
+STEP 2: CLEAR CACHE
+- Press Ctrl+F5 to clear browser cache
+- Log out and log back in to Odoo
+
+STEP 3: FIND WIZARDS
+After upgrade, look for "Ecuador Reports" in:
+- MAIN NAVIGATION BAR (top level)
+- Should contain:
+  ✓ VAT Reports (Forms 103/104) → Opens VAT wizard
+  ✓ ATS SRI Reports → Opens ATS wizard
+  ✓ Form 103 (Withholdings) → Opens Form 103 wizard
+  ✓ Ecuador Configuration → Configuration options
+
+STEP 4: TEST WIZARDS
+1. Click "VAT Reports (Forms 103/104)"
+   - Wizard opens with Company/Month/Year fields
+   - Click "Generate Report" 
+   - Export CSV and Print PDF buttons appear
+
+2. Click "ATS SRI Reports"
+   - Wizard opens with Company/Month/Year + Options
+   - Click "Generate ATS Report"
+   - Export XML ZIP button appears
+
+🛠️ TECHNICAL DETAILS:
+
+Security Groups: account.group_account_user, account.group_account_manager
+Models: vat.report.wizard, ats.report.wizard (transient models)
+Actions: action_vat_report_wizard, action_ats_report_wizard
+Templates: QWeb templates for PDF generation
+Exports: Standard Odoo attachment + download pattern
+
+🚨 TROUBLESHOOTING:
+
+If wizards don't appear:
+1. Check user has Accounting permissions
+2. Verify all modules show "Installed" status
+3. Try upgrading modules again
+4. Look in Settings → Technical → User Interface → Menu Items for "Ecuador Reports"
+
+The wizards are fully implemented - they just need proper module upgrades to appear!
