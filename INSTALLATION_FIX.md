@@ -45,11 +45,17 @@ if move_type in ['out_invoice', 'out_refund']:
 
 **Changed:**
 ```xml
-<!-- OLD (missing required attribute) -->
-<label string="Report Generated Successfully"/>
+<!-- OLD (problematic label without for attribute) -->
+<group>
+    <group>
+        <label string="Report Generated Successfully"/>
+    </group>
+</group>
 
-<!-- NEW (with proper class) -->
-<label string="Report Generated Successfully" class="o_form_label"/>
+<!-- NEW (proper alert div with Bootstrap styling) -->
+<div class="alert alert-success" role="alert">
+    <strong>Report Generated Successfully!</strong> Use the tabs below to view the results.
+</div>
 ```
 
 ## 📋 Final Box Code Mapping (Ecuador Form 104)

@@ -21,11 +21,9 @@
                     </group>
                     
                     <div class="oe_chatter" attrs="{'invisible': [('summary_data', '=', False)]}">
-                        <group>
-                            <group>
-                                <label string="Withholding Report Generated Successfully" class="o_form_label"/>
-                            </group>
-                        </group>
+                        <div class="alert alert-success" role="alert">
+                            <strong>Withholding Report Generated Successfully!</strong> Use the tabs below to view the results.
+                        </div>
                         
                         <notebook>
                             <page string="Summary" attrs="{'invisible': [('summary_data', '=', False)]}">
