@@ -4,6 +4,7 @@
     <menuitem id="menu_ec_ats_reports"
               name="ATS SRI Reports"
               parent="l10n_ec_reports_vat.menu_ec_reports_root"
+              action="action_ats_report_wizard"
               sequence="20"/>
 
     <!-- ATS Catalogs submenu -->

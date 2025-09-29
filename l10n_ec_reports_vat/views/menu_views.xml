@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!-- Ecuador Reports Root Menu - Under Invoices -->
+    <!-- Ecuador Reports Root Menu - Under Accounting Reports -->
     <menuitem id="menu_ec_reports_root" 
               name="Ecuador Reports" 
-              parent="account.menu_finance"
+              parent="account.menu_finance_reports"
               sequence="50"/>
 
     <!-- VAT Report Menu -->
     <menuitem id="menu_ec_vat_reports"
               name="VAT Reports (Forms 103/104)"
               parent="menu_ec_reports_root"
+              action="action_vat_report_wizard"
               sequence="10"/>
 
     <!-- Configuration Menu -->
@@ -22,5 +23,6 @@
     <menuitem id="menu_ec_104_line_mappings"
               name="Form 104 Line Mappings"
               parent="menu_ec_reports_config"
+              action="action_ec_104_line"
               sequence="10"/>
 </odoo>
