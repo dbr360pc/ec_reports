@@ -27,6 +27,11 @@
 
 **Root Cause:** Data file referenced fields that didn't exist in the model definition
 
+## ❌ Problem 6: Duplicate Model Codes
+**Error:** `Code "04" already exists.`
+
+**Root Cause:** Multiple records in the same model using identical codes
+
 ## ✅ Solutions Applied
 
 ### 1. Fixed Duplicate Box Codes
@@ -124,6 +129,20 @@ move_type = fields.Selection([
     ('out_refund', 'Customer Credit Note'),
     ('in_refund', 'Vendor Credit Note'),
 ], string='Move Type', help='Related account move type for this document')
+```
+
+### 8. Fixed Duplicate Catalog Codes
+**File:** `l10n_ec_reports_ats_sri/data/ats_catalog_data.xml`
+
+**Changed duplicate document type codes:**
+```xml
+<!-- OLD (duplicate code 04) -->
+<field name="name">Nota de crédito de venta</field>
+<field name="code">04</field>
+
+<!-- NEW (unique code 41) -->
+<field name="name">Nota de crédito de venta</field>
+<field name="code">41</field>
 ```
 
 ## 📋 Final Box Code Mapping (Ecuador Form 104)

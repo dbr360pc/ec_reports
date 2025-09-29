@@ -72,7 +72,7 @@
         
         <record id="ats_doc_type_out_credit_note" model="ats.document.type">
             <field name="name">Nota de crédito de venta</field>
-            <field name="code">04</field>
+            <field name="code">41</field>
             <field name="move_type">out_refund</field>
         </record>
         
