@@ -1,0 +1,40 @@
+ECUADOR REPORTS NOT SHOWING - TROUBLESHOOTING
+============================================
+
+PROBLEM: Ecuador Reports menu is not visible
+
+SOLUTION APPLIED: Moved Ecuador Reports to TOP LEVEL
+- Removed parent dependency that might not exist
+- Ecuador Reports will now appear in the main menu bar
+
+TROUBLESHOOTING STEPS:
+
+1. UPGRADE VAT MODULE FIRST:
+   - Go to Apps → Search "l10n_ec_reports_vat"
+   - Click "Upgrade" button
+   - Wait for completion
+
+2. CHECK TOP-LEVEL MENU:
+   After upgrading VAT module, look for "Ecuador Reports" in:
+   - Main navigation bar (top level)
+   - NOT under Accounting anymore
+
+3. IF STILL NOT VISIBLE:
+   - Clear browser cache (Ctrl+F5)
+   - Log out and log back in
+   - Check Apps → Search "Ecuador" to verify modules are installed
+
+4. VERIFY MODULE STATUS:
+   In Apps, check that all modules show "Installed":
+   ✓ Ecuador VAT Reports (Form 103/104)
+   ✓ Ecuador ATS SRI Reports  
+   ✓ Ecuador Form 103 Reports
+
+CURRENT STRUCTURE (After VAT upgrade):
+┌─ Ecuador Reports (TOP LEVEL)
+│  ├─ VAT Reports (Forms 103/104)
+│  ├─ ATS SRI Reports (after ATS module upgrade)
+│  └─ Form 103 (Withholdings) (after Form 103 module upgrade)
+
+NEXT STEP: 
+Upgrade the VAT module first - this will create the Ecuador Reports menu that should be visible at the top level!

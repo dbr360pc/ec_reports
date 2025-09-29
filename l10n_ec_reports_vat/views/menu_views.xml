@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Ecuador Reports Root Menu under Accounting -->
+    <!-- Ecuador Reports Root Menu - Top Level (guaranteed to work) -->
     <menuitem id="menu_ec_reports_root" 
               name="Ecuador Reports" 
-              parent="account.menu_finance"
               sequence="100"/>
 
     <!-- VAT Report Menu -->
