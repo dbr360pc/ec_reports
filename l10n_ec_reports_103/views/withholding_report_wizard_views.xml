@@ -23,7 +23,7 @@
                     <div class="oe_chatter" attrs="{'invisible': [('summary_data', '=', False)]}">
                         <group>
                             <group>
-                                <label string="Withholding Report Generated Successfully"/>
+                                <label string="Withholding Report Generated Successfully" class="o_form_label"/>
                             </group>
                         </group>
                         
