@@ -20,19 +20,19 @@
                         </group>
                     </group>
                     
-                    <div class="oe_chatter" attrs="{'invisible': [('summary_data', '=', False)]}">
+                    <div class="oe_chatter" invisible="summary_data == False">
                         <div class="alert alert-success" role="alert">
                             <strong>Withholding Report Generated Successfully!</strong> Use the tabs below to view the results.
                         </div>
                         
                         <notebook>
-                            <page string="Summary" attrs="{'invisible': [('summary_data', '=', False)]}">
+                            <page string="Summary" invisible="summary_data == False">
                                 <field name="summary_data" widget="text" readonly="1"/>
                             </page>
-                            <page string="Details" attrs="{'invisible': [('detail_data', '=', False)]}">
+                            <page string="Details" invisible="detail_data == False">
                                 <field name="detail_data" widget="text" readonly="1"/>
                             </page>
-                            <page string="Export" attrs="{'invisible': [('csv_summary_file', '=', False)]}">
+                            <page string="Export" invisible="csv_summary_file == False">
                                 <group>
                                     <field name="csv_summary_file" filename="csv_summary_filename" readonly="1"/>
                                     <field name="csv_summary_filename" invisible="1"/>
@@ -47,13 +47,13 @@
                 <footer>
                     <button name="action_generate_report" string="Generate Report" 
                             type="object" class="btn-primary" 
-                            attrs="{'invisible': [('summary_data', '!=', False)]}"/>
+                            invisible="summary_data != False"/>
                     <button name="action_export_csv" string="Export CSV" 
                             type="object" class="btn-secondary"
-                            attrs="{'invisible': [('summary_data', '=', False)]}"/>
+                            invisible="summary_data == False"/>
                     <button name="action_print_report" string="Print PDF" 
                             type="object" class="btn-secondary"
-                            attrs="{'invisible': [('summary_data', '=', False)]}"/>
+                            invisible="summary_data == False"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

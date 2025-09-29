@@ -12,6 +12,11 @@
 
 **Root Cause:** Label tags without proper "for" attribute or "o_form_label" class
 
+## ❌ Problem 3: Deprecated attrs Attribute
+**Error:** `Since 17.0, the "attrs" and "states" attributes are no longer used.`
+
+**Root Cause:** Odoo 17 replaced `attrs` with direct attributes like `invisible`, `required`, etc.
+
 ## ✅ Solutions Applied
 
 ### 1. Fixed Duplicate Box Codes
@@ -58,6 +63,29 @@ if move_type in ['out_invoice', 'out_refund']:
 </div>
 ```
 
+### 4. Converted attrs to Direct Attributes
+**Files:** All view files in all modules
+
+**Changed:**
+```xml
+<!-- OLD (Odoo 16 and earlier) -->
+attrs="{'invisible': [('field_name', '=', False)]}"
+attrs="{'required': [('field_name', '=', 'value')]}"
+
+<!-- NEW (Odoo 17 format) -->
+invisible="field_name == False"
+required="field_name == 'value'"
+```
+
+**Complex Conditions:**
+```xml
+<!-- OLD -->
+attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('move_type', 'not in', ['out_invoice'])]}"
+
+<!-- NEW -->
+invisible="state != 'posted' or move_type not in ('out_invoice')"
+```
+
 ## 📋 Final Box Code Mapping (Ecuador Form 104)
 
 | Code | Description | Usage |
@@ -80,9 +108,16 @@ The modules should now install without errors:
 
 ✅ **All box codes are unique** and properly mapped according to Ecuador's Form 104 structure  
 ✅ **All view elements comply** with Odoo 17 validation requirements  
-✅ **Label tags have proper** class attributes for consistent styling  
+✅ **Label tags replaced** with proper Bootstrap alert divs for better UX  
+✅ **All attrs converted** to Odoo 17 direct attribute format  
+✅ **Complex conditions updated** with proper boolean logic syntax
+
+**Installation Status:**
+All three modules are now **fully compatible with Odoo 17 Community Edition**.
 
 **Next Steps:**
 1. Try installing `l10n_ec_reports_vat` first (base module)
 2. Then install `l10n_ec_reports_ats_sri` (depends on VAT module)  
 3. Finally install `l10n_ec_reports_103` (depends on VAT module)
+
+The modules should now install without any validation errors!

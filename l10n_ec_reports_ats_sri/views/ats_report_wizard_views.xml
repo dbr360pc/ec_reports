@@ -21,12 +21,12 @@
                         </group>
                     </group>
                     
-                    <div attrs="{'invisible': [('validation_report', '=', False)]}">
+                    <div invisible="validation_report == False">
                         <separator string="Validation Report"/>
                         <field name="validation_report" widget="html" readonly="1"/>
                     </div>
                     
-                    <div attrs="{'invisible': [('xml_file', '=', False)]}">
+                    <div invisible="xml_file == False">
                         <separator string="Export Files"/>
                         <group>
                             <field name="xml_file" filename="xml_filename" readonly="1"/>
@@ -40,7 +40,7 @@
                 <footer>
                     <button name="action_generate_report" string="Generate ATS Report" 
                             type="object" class="btn-primary" 
-                            attrs="{'invisible': [('xml_file', '!=', False)]}"/>
+                            invisible="xml_file != False"/>
                     <button string="Close" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

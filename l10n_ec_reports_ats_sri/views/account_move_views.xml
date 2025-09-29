@@ -11,22 +11,24 @@
                 <field name="x_ec_payment_method_id"/>
                 <button name="action_suggest_payment_method" string="Suggest Payment Method" 
                         type="object" class="oe_link" 
-                        attrs="{'invisible': ['|', ('state', '!=', 'posted'), ('move_type', 'not in', ['out_invoice', 'in_invoice'])]}"/>
+                        invisible="state != 'posted' or move_type not in ('out_invoice', 'in_invoice')"/>
             </xpath>
             
             <xpath expr="//field[@name='ref']" position="after">
                 <field name="x_ec_document_type_id"/>
                 <field name="x_ec_sustain_code_id"
-                       attrs="{'invisible': [('move_type', 'not in', ['in_invoice', 'in_refund'])]}"/>
+                       invisible="move_type not in ('in_invoice', 'in_refund')"/>
                 <field name="x_ec_supplier_invoice_number" 
-                       attrs="{'invisible': [('move_type', 'not in', ['in_invoice', 'in_refund'])], 'required': [('move_type', 'in', ['in_invoice', 'in_refund'])]}"/>
+                       invisible="move_type not in ('in_invoice', 'in_refund')"
+                       required="move_type in ('in_invoice', 'in_refund')"/>
                 <field name="x_ec_supplier_authorization"
-                       attrs="{'invisible': [('move_type', 'not in', ['in_invoice', 'in_refund'])], 'required': [('move_type', 'in', ['in_invoice', 'in_refund'])]}"/>
+                       invisible="move_type not in ('in_invoice', 'in_refund')"
+                       required="move_type in ('in_invoice', 'in_refund')"/>
             </xpath>
             
             <xpath expr="//field[@name='reversed_entry_id']" position="after">
                 <group string="ATS Reference Document Info" 
-                       attrs="{'invisible': [('move_type', 'not in', ['out_refund', 'in_refund'])]}">
+                       invisible="move_type not in ('out_refund', 'in_refund')">
                     <field name="x_ec_reference_document_type"/>
                     <field name="x_ec_reference_series"/>
                     <field name="x_ec_reference_sequential"/>
