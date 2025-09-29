@@ -150,6 +150,20 @@ move_type = fields.Selection([
 <field name="code">41</field>
 ```
 
+### 9. Fixed Cross-Module References
+**Files:** Menu and report template files
+
+**Updated all external ID references:**
+```xml
+<!-- OLD (old module names) -->
+parent="ec_reports_vat.menu_sri_reports"
+report_name="ec_reports_103.report_withholding_103_document"
+
+<!-- NEW (new module names) -->
+parent="l10n_ec_reports_vat.menu_sri_reports" 
+report_name="l10n_ec_reports_103.report_withholding_103_document"
+```
+
 ## 📋 Final Box Code Mapping (Ecuador Form 104)
 
 | Code | Description | Usage |
@@ -178,7 +192,8 @@ The modules should now install without errors:
 ✅ **Security files fixed** with proper module-prefixed external IDs  
 ✅ **Missing models added** (AtsSustainCode) for complete functionality  
 ✅ **Missing fields added** (move_type) to match data file requirements  
-✅ **Duplicate codes resolved** in catalog data for proper uniqueness constraints
+✅ **Duplicate codes resolved** in catalog data for proper uniqueness constraints  
+✅ **Cross-module references updated** to match renamed module names
 
 **Installation Status:**
 All three modules are now **fully compatible with Odoo 17 Community Edition**.
