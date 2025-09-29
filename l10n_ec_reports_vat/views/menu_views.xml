@@ -1,28 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!-- Root Ecuador Reports Menu -->
-    <menuitem id="menu_ec_reports_root"
-              name="Ecuador Reports"
-              parent="account.menu_finance"
+    <!-- Main Menu -->
+    <menuitem id="menu_sri_reports" 
+              name="SRI Reports" 
+              parent="account.menu_finance_reports"
               sequence="100"/>
 
-    <!-- VAT Reports Menu (temporarily without action) -->
-    <menuitem id="menu_ec_vat_reports"
-              name="VAT Reports (Forms 103/104)"
-              parent="menu_ec_reports_root"
+    <!-- VAT Report Menu -->
+    <menuitem id="menu_vat_report_wizard"
+              name="VAT Report (Form 103/104)"
+              parent="menu_sri_reports"
+              action="action_vat_report_wizard"
               sequence="10"/>
 
-    <!-- Configuration submenu -->
-    <menuitem id="menu_ec_reports_config"
-              name="Ecuador Configuration"
+    <!-- Configuration Menu -->
+    <menuitem id="menu_sri_config"
+              name="SRI Configuration"
               parent="account.menu_finance_configuration"
               sequence="100"/>
 
-    <!-- 104 Line Mappings (temporarily without action) -->
-    <menuitem id="menu_ec_104_line_mappings"
-              name="Form 104 Line Mappings"
-              parent="menu_ec_reports_config"
+    <!-- 104 Line Mappings Menu -->
+    <menuitem id="menu_ec_104_line"
+              name="104 Form Line Mappings"
+              parent="menu_sri_config"
+              action="action_ec_104_line"
               sequence="10"/>
 
 </odoo>

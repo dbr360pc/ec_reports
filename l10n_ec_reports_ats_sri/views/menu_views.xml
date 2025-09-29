@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     
-    <!-- Temporary: Use direct parent until VAT module is installed -->
+    <!-- Top level menu - no parent dependencies -->
     <menuitem id="menu_ec_ats_reports"
               name="ATS SRI Reports"
-              parent="account.menu_finance"
               action="action_ats_report_wizard"
               sequence="120"/>
 
