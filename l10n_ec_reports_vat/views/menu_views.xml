@@ -2,14 +2,20 @@
 <odoo>
 
     <!-- Main Menu -->
-    <menuitem id="menu_sri_reports" 
-              name="SRI Reports" 
+    <menuitem id="menu_ecuador_reports" 
+              name="Ecuador Reports" 
               parent="account.menu_finance_reports"
               sequence="100"/>
 
+    <!-- SRI Reports Submenu -->
+    <menuitem id="menu_sri_reports" 
+              name="SRI Reports" 
+              parent="menu_ecuador_reports"
+              sequence="10"/>
+
     <!-- VAT Report Menu -->
     <menuitem id="menu_vat_report_wizard"
-              name="VAT Report (Form 103/104)"
+              name="VAT Reports (Forms 103/104)"
               parent="menu_sri_reports"
               action="action_vat_report_wizard"
               sequence="10"/>
