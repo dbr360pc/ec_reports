@@ -1,0 +1,59 @@
+TROUBLESHOOTING GUIDE - MISSING WIZARDS
+======================================
+
+ISSUE: VAT REPORTS WIZARD and ATS SRI REPORTS WIZARD are not appearing
+
+DIAGNOSIS CHECKLIST:
+
+1. ✓ ACTIONS ARE DEFINED:
+   - action_vat_report_wizard exists in l10n_ec_reports_vat/views/vat_report_wizard_views.xml
+   - action_ats_report_wizard exists in l10n_ec_reports_ats_sri/views/ats_report_wizard_views.xml
+
+2. ✓ MENUS REFERENCE ACTIONS:
+   - VAT menu references action="action_vat_report_wizard" 
+   - ATS menu references action="action_ats_report_wizard"
+
+3. ✓ MANIFESTS INCLUDE WIZARD FILES:
+   - VAT: includes 'views/vat_report_wizard_views.xml'
+   - ATS: includes 'views/ats_report_wizard_views.xml'
+
+ROOT CAUSE POSSIBILITIES:
+
+A) MODULES NOT UPGRADED:
+   The most likely cause is that modules haven't been upgraded with recent changes.
+
+B) LOADING ORDER ISSUE:
+   Wizard views might be loading before menu views.
+
+C) SECURITY PERMISSIONS:
+   User might not have account.group_account_user or account.group_account_manager groups.
+
+SOLUTIONS TO TRY:
+
+STEP 1: FORCE MODULE UPGRADE
+1. Go to Apps → Remove "Apps" filter
+2. Search "Ecuador" 
+3. Upgrade ALL THREE modules:
+   - l10n_ec_reports_vat (FIRST)
+   - l10n_ec_reports_ats_sri  
+   - l10n_ec_reports_103
+4. Clear browser cache (Ctrl+F5)
+5. Log out and log back in
+
+STEP 2: CHECK SECURITY GROUPS
+1. Go to Settings → Users & Companies → Users
+2. Edit your user
+3. Under "Access Rights" tab verify you have:
+   - Accounting: Administrator or Show Accounting Features
+
+STEP 3: CHECK MENU LOCATION
+Navigate to: Accounting → Reports → Ecuador Reports
+(NOT Accounting → Ecuador Reports)
+
+STEP 4: VERIFY INSTALLATION
+1. Go to Apps
+2. Search "Ecuador VAT Reports"
+3. Should show "Installed" status
+4. If not, install it first
+
+If wizards still don't appear, the issue is likely that the parent menu "account.menu_finance" doesn't exist in your Odoo installation.
