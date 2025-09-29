@@ -32,6 +32,11 @@
 
 **Root Cause:** Multiple records in the same model using identical codes
 
+## ❌ Problem 7: Invalid Cross-Module References
+**Error:** `External ID not found in the system: ec_reports_vat.menu_sri_reports`
+
+**Root Cause:** Menu and report references still used old module names after renaming
+
 ## ✅ Solutions Applied
 
 ### 1. Fixed Duplicate Box Codes
@@ -172,7 +177,8 @@ The modules should now install without errors:
 ✅ **Complex conditions updated** with proper boolean logic syntax  
 ✅ **Security files fixed** with proper module-prefixed external IDs  
 ✅ **Missing models added** (AtsSustainCode) for complete functionality  
-✅ **Missing fields added** (move_type) to match data file requirements
+✅ **Missing fields added** (move_type) to match data file requirements  
+✅ **Duplicate codes resolved** in catalog data for proper uniqueness constraints
 
 **Installation Status:**
 All three modules are now **fully compatible with Odoo 17 Community Edition**.
