@@ -22,36 +22,6 @@
               action="action_ec_vat_reports"
               sequence="10"/>
 
-    <!-- ATS Reports Action and Menu -->
-    <record id="action_ec_ats_reports" model="ir.actions.act_window">
-        <field name="name">ATS SRI Reports</field>
-        <field name="res_model">ats.report.wizard</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-        <field name="groups_id" eval="[(6, 0, [ref('account.group_account_user'), ref('account.group_account_manager')])]"/>
-    </record>
-    
-    <menuitem id="menu_ec_ats_reports"
-              name="ATS SRI Reports"
-              parent="menu_ec_reports_root"
-              action="action_ec_ats_reports"
-              sequence="20"/>
-
-    <!-- Form 103 Withholdings Action and Menu -->
-    <record id="action_ec_103_reports" model="ir.actions.act_window">
-        <field name="name">Form 103 Withholdings</field>
-        <field name="res_model">withholding.report.wizard</field>
-        <field name="view_mode">form</field>
-        <field name="target">new</field>
-        <field name="groups_id" eval="[(6, 0, [ref('account.group_account_user'), ref('account.group_account_manager')])]"/>
-    </record>
-    
-    <menuitem id="menu_ec_103_reports"
-              name="Form 103 Withholdings"
-              parent="menu_ec_reports_root"
-              action="action_ec_103_reports"
-              sequence="30"/>
-
     <!-- Configuration submenu -->
     <menuitem id="menu_ec_reports_config"
               name="Ecuador Configuration"

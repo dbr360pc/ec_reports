@@ -28,6 +28,7 @@
         'base',
         'account',
         'l10n_ec',
+        'l10n_ec_reports_vat',
         'l10n_ec_reports_vat',  # For shared functionality
     ],
     'data': [

@@ -25,7 +25,7 @@
     """,
     'author': 'Custom Development',
     'website': 'https://www.odoo.com',
-    'depends': ['account', 'l10n_ec'],
+    'depends': ['account', 'l10n_ec', 'l10n_ec_reports_vat'],
     'data': [
         'security/ir.model.access.csv',
         'data/ats_catalog_data.xml',

@@ -32,7 +32,6 @@
         'views/menu_views.xml',
         'views/ec_reports_menu.xml',
         'views/vat_report_wizard_views.xml',
-        'reports/ec_vat_reports.xml',
         'reports/vat_report_templates.xml',
     ],
     'installable': True,
